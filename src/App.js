@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Topbar from "./components/topbar/Topbar";
+import { Context } from "./context/Context";
+import HomePage from "./pages/homepage/HomePage";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
 
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useContext } from "react";
 function App() {
+  const {user} = true;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Topbar />
+      <Switch>
+      <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route path="/register">{user ? <HomePage /> : <Register />}</Route>
+        <Route path="/login">{user ? <HomePage /> : <Login />}</Route>
+  
+      </Switch>
+    </Router>
   );
 }
 

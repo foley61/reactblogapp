@@ -1,0 +1,4 @@
+.postCards{
+    display: flex;
+    flex-wrap: wrap;
+}
